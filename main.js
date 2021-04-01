@@ -17,13 +17,85 @@
  */
 const gridWidth = 10;
 let count = 0;
-while (count <= gridWidth * gridWidth) {
+while (count < gridWidth * gridWidth) {
   const canvas = document.querySelector('.canvas');
   const div = document.createElement('div');
   div.className = 'square color-5';
   canvas.appendChild(div);
   count++;
 }
+
+// ======================
+// Changing brush color
+//=======================
+
+//
+const paletteColors = document.querySelectorAll('.palette-color');
+
+//
+const currentBrush = document.querySelector('.current-brush');
+
+// 
+for (const paletteColor of paletteColors) {
+
+  
+  paletteColor.addEventListener('click', function (){
+  
+    
+    
+  const brushColorBefore = paletteBrush.classlist[1];
+  
+    
+  const newBrushColor = paletteColor.classlist[1];
+
+    
+  currentBrush.classList.replace(brushColorBefore, newBrushColor);
+  
+  });
+}
+// Changing square colors
+// ========================
+
+// 
+const squares = document.querySelectorAll('.square');
+
+//
+for (const square of squares) {
+
+  // 
+  square.addEventListener('click', function () {
+
+    //
+    const brushClasses = currentBrush.className.split(' ');
+  
+    //
+    const brushColor = brushClasses[1];    
+
+    //
+    square.className = 'square ${brushColor}';
+  });
+}
+
+// ============================================
+// Changing squares colors with click and drag
+// ============================================
+
+
+
+
+
+
+
+let penDown = false;
+
+document.addEventListener('mousedown', function () {
+  console.log('mouse down');
+});
+
+document.addEventListener('mouseup', function () {
+  console.log('mouse up');
+});
+
 
 // You probably should NOT do these in the order below.
 // That is, you probably should NOT do all the queries,
